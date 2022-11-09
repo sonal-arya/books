@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
-
+import selectedChapterReducer from '../features/chapterSlice'
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    chapterSelect: selectedChapterReducer
   },
 });

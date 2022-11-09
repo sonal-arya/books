@@ -1,57 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import "./App.css";
+import items from "./utils/data";
+import { useState } from "react";
+import Categories from "./components/Categories";
+import Books from "./components/Books";
+import { Button } from "@mui/material";
+const allCategories = ["selected", ...new Set(items.map((item) => item.subject))];
+console.log(allCategories);
 function App() {
+  const [bookItems, setBookItems] = useState(items);
+  const [categories, setCategories] = useState(allCategories);
+ 
+  const filterItems = (subject) => {
+    console.log("#",subject)
+    if (subject === "yes") {
+      setBookItems(items);
+      return;
+    }
+    const newItems = items.filter((item) => item.subject === subject);
+    setBookItems(newItems);
+  }; 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <main>
+      <section className="menu section">
+        <div className="title">
+          <h2>BOOKS</h2>
+          <div className="underline"></div>
+        </div>
+        <Categories categories={categories} filterItems={filterItems} />
+        <Books  items={bookItems} key={bookItems.id} />
+      </section>
+    </main>
   );
 }
 
