@@ -7,6 +7,7 @@ const chapterSlice = createSlice({
   initialState,
   reducers: {
     saveChapter: (state, action) => {
+      console.log("hello from store",action.payload)
       state.chapterList.push(action.payload);
     },
     setSaveChapter:(state,action) =>{
@@ -14,6 +15,7 @@ const chapterSlice = createSlice({
     }
   },
 });
-export const {saveChapter, setSaveChapter} = chapterSlice.actions
-export const selectChapterList =  state => state.chapter.chapterList
-export default chapterSlice.reducer
+export const {saveChapter, setSaveChapter} = chapterSlice.actions;
+
+export const selectChapterList =  state => state.chapter.chapterList;
+export default chapterSlice.reducer;
