@@ -121,7 +121,7 @@ p {
 
 @media screen and (min-width: 992px) {
   .section {
-    width: 80vw;
+    width: 70vw;
   }
 }
 
@@ -198,9 +198,10 @@ Menu
 .btn-next {
   display: flex;
   justify-content: space-between;
-
-  width: 30vw;
-  padding: 30px;
+  width: 58vw;
+  margin-left: 89px;
+  /* padding: 30px; */
+  /* border: solid 1px; */
 }
 @media screen and (min-width: 768px) {
   .menu-item {

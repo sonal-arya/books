@@ -14,22 +14,15 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveChapter } from "../features/chapterSlice";
-
-const Books = ({ items, categories }) => {
-  console.log("!", items.length);
+const Books = ({ items }) => {
   const [isSelect, setIsSelect] = useState();
   const dispatch = useDispatch();
   const addChapter = (data) => {
-    console.log("@#",data.chapter);
-    dispatch(saveChapter({
-      chapter : data.chapter,
-      value:isSelect,
-
-    }));
+    dispatch(saveChapter(
+    data
+    ));
   };
-  // console.log("@", data);
   const [index, setIndex] = useState(0);
-  console.log("categories", categories);
   const prevChapter = () => {
     setIndex((categories) => {
       let newIndex = categories - 1;
@@ -39,10 +32,8 @@ const Books = ({ items, categories }) => {
   const count = [];
   for (let i = 1; i < items.length; i++) {
     count.push(i);
+
   }
-
-
-
   return (
     <>
       <TableContainer component={Paper} className="section-center">
@@ -62,10 +53,10 @@ const Books = ({ items, categories }) => {
         </TableHead>
         <TableBody>
           {items.map((bookItem, count) => {
-            const { id, chapter, title, info } = bookItem;
-           
+            const { id, chapter, title, info,subject } = bookItem;
             return (
               <>
+              {/* {subject==="selected"?console.log("hey"):console.log("bye")} */}
                 <TableRow
                 id = "choice"
                   key={id}
@@ -84,7 +75,6 @@ const Books = ({ items, categories }) => {
                       onClick={() => {
                         addChapter(bookItem);
                       }}
-                  // onClick={handleChange}
                     >
                       <FormControlLabel
                         value="yes"
@@ -104,32 +94,20 @@ const Books = ({ items, categories }) => {
                     <h4>{chapter}</h4>
                   </TableCell>
                 </TableRow>
-                {/* <Button
-          disabled={isSelect}
-          className="submit-btn"
-          variant="contained"
-          color="success"
-         
-        >
-          Submit
-        </Button> */}
+           
               </>
             );
           })}
         </TableBody>
+            <Button
+          disabled={isSelect}
+          className="submit-btn"
+          variant="contained"
+          color="success"
+        >
+          Submit
+        </Button>
        
-        <div className="btn-next">
-          <Button variant="contained" color="success" onClick={prevChapter}>
-            Prev
-          </Button>
-          <Button
-            variant="contained"
-            color="success"
-            // onClick={nxtChapter}
-          >
-            Next
-          </Button>
-        </div>
       </TableContainer>
     </>
   );

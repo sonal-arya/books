@@ -20,6 +20,7 @@
     padding: 0.375rem 0.75rem;
     color: var(--clr-gold);
     cursor: pointer;
+    box-shadow: 0px 1px 8px #d8d6d6de;
     transition: var(--transition);
     border-radius: var(--radius);
 }
@@ -30,8 +31,25 @@
     background: var(--clr-gold);
     color: var(--clr-white);
   }
+  .filter-btn-select svg{
+    height: 15px;
+  }
+  .filter-btn-select{
+    border-color: transparent;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    margin: 2.3rem 0.5rem;
+    letter-spacing: 1px;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+    box-shadow: 0px 1px 8px #d8d6d6de;
+    transition: var(--transition);
+    border-radius: var(--radius);
+    background: var(--clr-gold);
+    color: var(--clr-white);
+  }
 
-  .question {
+    .question {
     padding: 1rem 1.5rem;
     border: 2px solid var(--clr-grey-special);
     margin-bottom: 1rem;
