@@ -1,5 +1,4 @@
 :root {
-  /* dark shades of primary color*/
   --clr-primary-1: hsl(205, 86%, 17%);
   --clr-primary-2: hsl(205, 77%, 27%);
   --clr-primary-3: hsl(205, 72%, 37%);
@@ -125,11 +124,7 @@ p {
   }
 }
 
-/*
-=============== 
-Menu
-===============
-*/
+/*Menu*/
 .sidebar {
   position: sticky;
   top: 0;
@@ -200,8 +195,6 @@ Menu
   justify-content: space-between;
   width: 58vw;
   margin-left: 89px;
-  /* padding: 30px; */
-  /* border: solid 1px; */
 }
 @media screen and (min-width: 768px) {
   .menu-item {

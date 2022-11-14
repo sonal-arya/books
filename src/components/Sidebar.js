@@ -1,14 +1,12 @@
 import React from "react";
 import "./index.css";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
-const Categories = ({ categories, filterItems ,value}) => {
+const Categories = ({ categories, filterItems ,value, indexValue}) => {
   return (
     <>
       <div className="btn-container">
         <span>Book chapters</span>
-        {categories.map((category, index) => {
-    console.log("sidebar",value,category);
-         
+        {categories.map((category, index) => {         
          return (
             <>
               <button
@@ -16,7 +14,8 @@ const Categories = ({ categories, filterItems ,value}) => {
                 className={value===category?'filter-btn-select':'filter-btn'}
                 key={index}
                 onClick={() => {
-                 filterItems(category)}}
+                  // console.log(category,category.length,indexValue);
+                  filterItems(category)}}
               >
                 <AutoStoriesIcon />
                 {category}

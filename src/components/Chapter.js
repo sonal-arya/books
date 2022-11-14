@@ -14,7 +14,7 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveChapter } from "../features/chapterSlice";
-const Books = ({ items }) => {
+const Books = ({ items,index }) => {
   const [isSelect, setIsSelect] = useState();
   const dispatch = useDispatch();
   const addChapter = (data) => {
@@ -22,17 +22,9 @@ const Books = ({ items }) => {
     data
     ));
   };
-  const [index, setIndex] = useState(0);
-  const prevChapter = () => {
-    setIndex((categories) => {
-      let newIndex = categories - 1;
-      return newIndex;
-    });
-  };
   const count = [];
   for (let i = 1; i < items.length; i++) {
     count.push(i);
-
   }
   return (
     <>
@@ -43,10 +35,10 @@ const Books = ({ items }) => {
             <TableCell align="left">
               <h4>Serial no.</h4>
             </TableCell>
-            <TableCell align="left">
+            <TableCell align="right">
               <h4>Select</h4>
             </TableCell>
-            <TableCell align="left">
+            <TableCell align="right">
               <h4>Chapter</h4>
             </TableCell>
           </TableRow>
@@ -56,7 +48,6 @@ const Books = ({ items }) => {
             const { id, chapter, title, info,subject } = bookItem;
             return (
               <>
-              {/* {subject==="selected"?console.log("hey"):console.log("bye")} */}
                 <TableRow
                 id = "choice"
                   key={id}
@@ -94,7 +85,6 @@ const Books = ({ items }) => {
                     <h4>{chapter}</h4>
                   </TableCell>
                 </TableRow>
-           
               </>
             );
           })}
@@ -103,11 +93,11 @@ const Books = ({ items }) => {
           disabled={isSelect}
           className="submit-btn"
           variant="contained"
+          key={index}
           color="success"
         >
           Submit
         </Button>
-       
       </TableContainer>
     </>
   );
